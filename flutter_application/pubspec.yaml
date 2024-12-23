@@ -17,3 +17,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/welcome.PNG
+    - assets/signup.jpg
+    - assets/password.jpg
+    - assets/signcode.jpg
+    - assets/signin.jpg
