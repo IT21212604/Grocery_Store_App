@@ -1,0 +1,36 @@
+
+{
+    "delivery_location": {
+      "floor": "Floor 6",
+      "building": "ITUM Administative Building",
+      "area": "Diyagama , Homagama"
+    },
+    "time_slots": [
+      "8 AM - 11 AM",
+      "11 AM - 13 PM",
+      "13 PM - 15 PM",
+      "15 PM - 17 PM",
+      "17 PM - 19 PM",
+      "19 PM - 21 PM"
+    ],
+    "payment_methods": [
+      {
+        "name": "Google pay",
+        "type": "apple_pay",
+        "isSelected": true,
+        "icon": "apple"
+      },
+      {
+        "name": "Cash On Delivery",
+        "type": "cod",
+        "isSelected": false,
+        "icon": "money"
+      }
+    ],
+    "order_summary": {
+      "subtotal": 137.00,
+      "tax": 4.50,
+      "delivery_price": 5.00,
+      "total": 500.00
+    }
+  }
