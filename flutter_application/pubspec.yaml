@@ -24,3 +24,8 @@ flutter:
     - assets/password.jpg
     - assets/signcode.jpg
     - assets/signin.jpg
+    - assets/payment_data.json
+    - assets/apple.png
+    - assets/banana.png
+    - assets/avocado.png
+    - assets/salmon.png
