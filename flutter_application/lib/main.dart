@@ -4,6 +4,9 @@ import 'screens/sign_up_screen.dart';
 import 'screens/password_screen.dart';
 import 'screens/Sign_in_screen.dart';
 import 'screens/Sign_code_screen.dart';
+import 'screens/address_list.dart';
+import 'screens/new_address.dart';
+import 'screens/edit_address.dart';
 
 
 void main() {
@@ -26,11 +29,18 @@ class GroceryApp extends StatelessWidget {
       initialRoute: '/',
       // Define all the routes
       routes: {
+       '/addressList': (context) => AddressPage(),
+        '/newAddress': (context) => NewAddress(),
+        '/editAddress': (context) => EditAddress(
+              index: 0,
+              address: {"title": "Sample", "city": "Sample City", "address": "Sample Address"},
+            ),
         '/': (context) => const WelcomeScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/password': (context) => const PasswordScreen(),
       '/signcode': (context) => const SignCodeScreen(), // Updated route name
     '/signin': (context) => const SignInScreen(),
+  
       }
     );
   }
