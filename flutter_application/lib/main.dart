@@ -7,7 +7,15 @@ import 'screens/Sign_code_screen.dart';
 import 'screens/address_list.dart';
 import 'screens/new_address.dart';
 import 'screens/edit_address.dart';
+import 'Screens/cart_screen.dart';
+import 'Screens/order_confirmation_screen.dart';
+import 'Screens/payment_screen.dart';
 
+import 'screens/cart.dart';
+import 'screens/home.dart';
+import 'screens/fruits.dart';
+import 'screens/categories.dart';
+import 'screens/fruitsDetails.dart';
 
 void main() {
   runApp(const GroceryApp());
@@ -38,9 +46,17 @@ class GroceryApp extends StatelessWidget {
         '/': (context) => const WelcomeScreen(),
         '/signup': (context) => const SignUpScreen(),
         '/password': (context) => const PasswordScreen(),
-      '/signcode': (context) => const SignCodeScreen(), // Updated route name
-    '/signin': (context) => const SignInScreen(),
-  
+        '/signcode': (context) => const SignCodeScreen(), // Updated route name
+        '/signin': (context) => const SignInScreen(),
+        '/cart': (context) => CartScreen(),
+        '/order_confirmation': (context) => const OrderConfirmationScreen(),
+        '/payment': (context) => const PaymentScreen(),
+        
+        '/home' : (context) => const HomeScreen(),
+        '/cart' : (context) => const CartPage(),
+        '/fruits' : (context) => const FruitsPage(),
+        '/fruitsDetails' : (context) => const FruitDetailsPage(name: 'Apple', price: '10.0', image: 'assets/apple.png', description: 'fresh apples'),
+        '/categories' : (context) => const CategoriesPage(),
       }
     );
   }
