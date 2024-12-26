@@ -28,10 +28,30 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   List<CartItem> items = [
-    CartItem(name: "Red Apple", price: 4.99, unit: "kg", quantity: 1, image: "assets/apple.png"),
-    CartItem(name: "Original Banana", price: 5.99, unit: "kg", quantity: 1, image: "assets/banana.png"),
-    CartItem(name: "Avocado Bowl", price: 24.0, unit: "st", quantity: 1, image: "assets/avocado.png"),
-    CartItem(name: "Salmon", price: 50.0, unit: "kg", quantity: 1, image: "assets/salmon.png"),
+    CartItem(
+        name: "Red Apple",
+        price: 4.99,
+        unit: "kg",
+        quantity: 1,
+        image: "assets/apple.png"),
+    CartItem(
+        name: "Original Banana",
+        price: 5.99,
+        unit: "kg",
+        quantity: 1,
+        image: "assets/banana.png"),
+    CartItem(
+        name: "Avocado Bowl",
+        price: 24.0,
+        unit: "st",
+        quantity: 1,
+        image: "assets/avocado.png"),
+    CartItem(
+        name: "Salmon",
+        price: 50.0,
+        unit: "kg",
+        quantity: 1,
+        image: "assets/salmon.png"),
   ];
 
   void _removeItem(int index) {
@@ -93,7 +113,8 @@ class _CartPageState extends State<CartPage> {
                 ),
               ),
               onPressed: () {},
-              child: const Text("CheckOut", style: TextStyle(color: Colors.white, fontSize: 18)),        
+              child: const Text("CheckOut",
+                  style: TextStyle(color: Colors.white, fontSize: 18)),
             ),
           ),
         ],
@@ -104,7 +125,8 @@ class _CartPageState extends State<CartPage> {
         unselectedItemColor: Colors.grey,
         currentIndex: 2,
         onTap: (index) {
-          if (index == 0) { // home page index
+          if (index == 0) {
+            // home page index
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -114,15 +136,18 @@ class _CartPageState extends State<CartPage> {
               context,
               MaterialPageRoute(builder: (context) => const CategoriesPage()),
             );
-          } 
+          }
           if (index == 2) return;
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
         ],
       ),
     );
@@ -174,7 +199,8 @@ class CartItemWidget extends StatelessWidget {
               children: [
                 Text(
                   item.name,
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "\$${item.price} ${item.unit}",
@@ -186,7 +212,8 @@ class CartItemWidget extends StatelessWidget {
           Row(
             children: [
               IconButton(
-                icon: const Icon(Icons.remove_circle_outline, color: Colors.brown),
+                icon: const Icon(Icons.remove_circle_outline,
+                    color: Colors.brown),
                 onPressed: onDecrement,
               ),
               Text(
