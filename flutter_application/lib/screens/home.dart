@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-              TextField(
+            TextField(
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search),
                 hintText: 'Search',
@@ -59,12 +59,36 @@ class HomeScreen extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  CategoryCard(circleColor: Colors.orange.shade100, imagePath: 'assets/fruits.png', label: 'Fruits', ),
-                  CategoryCard(circleColor: Colors.green.shade100, imagePath: 'assets/vegetables.png', label: 'Vegetables', ),
-                  CategoryCard(circleColor: Colors.red.shade100, imagePath: 'assets/meat.png', label: 'Meat', ),
-                  CategoryCard(circleColor: Colors.red.shade100, imagePath: 'assets/milk.png', label: 'Milk', ),
-                  CategoryCard(circleColor: Colors.red.shade100, imagePath: 'assets/seafood.png', label: 'Seafood', ),
-                  CategoryCard(circleColor: Colors.red.shade100, imagePath: 'assets/fish.png', label: 'Fish', ),
+                  CategoryCard(
+                    circleColor: Colors.orange.shade100,
+                    imagePath: 'assets/fruits.png',
+                    label: 'Fruits',
+                  ),
+                  CategoryCard(
+                    circleColor: Colors.green.shade100,
+                    imagePath: 'assets/vegetables.png',
+                    label: 'Vegetables',
+                  ),
+                  CategoryCard(
+                    circleColor: Colors.red.shade100,
+                    imagePath: 'assets/meat.png',
+                    label: 'Meat',
+                  ),
+                  CategoryCard(
+                    circleColor: Colors.red.shade100,
+                    imagePath: 'assets/milk.png',
+                    label: 'Milk',
+                  ),
+                  CategoryCard(
+                    circleColor: Colors.red.shade100,
+                    imagePath: 'assets/seafood.png',
+                    label: 'Seafood',
+                  ),
+                  CategoryCard(
+                    circleColor: Colors.red.shade100,
+                    imagePath: 'assets/fish.png',
+                    label: 'Fish',
+                  ),
                 ],
               ),
             ),
@@ -149,9 +173,12 @@ class HomeScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
         ],
       ),
     );
@@ -163,7 +190,11 @@ class CategoryCard extends StatelessWidget {
   final String label;
   final Color circleColor;
 
-  const CategoryCard({required this.imagePath, required this.label, required this.circleColor,});
+  const CategoryCard({
+    required this.imagePath,
+    required this.label,
+    required this.circleColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +202,6 @@ class CategoryCard extends StatelessWidget {
       onTap: () {
         print('Clicked on $label');
       },
-
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: Padding(
@@ -213,7 +243,8 @@ class DealCard extends StatelessWidget {
   final String price;
   final String image;
 
-  const DealCard({required this.title, required this.price, required this.image});
+  const DealCard(
+      {required this.title, required this.price, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -246,14 +277,16 @@ class DealCard extends StatelessWidget {
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12),
                   ),
-                  child: Image.asset(image, width: 140, height: 100, fit: BoxFit.cover),
+                  child: Image.asset(image,
+                      width: 140, height: 100, fit: BoxFit.cover),
                 ),
                 const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     title,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -264,7 +297,8 @@ class DealCard extends StatelessWidget {
                     children: [
                       Text(
                         '\$$price',
-                        style: const TextStyle(fontSize: 14, color: Colors.green),
+                        style:
+                            const TextStyle(fontSize: 14, color: Colors.green),
                       ),
                       IconButton(
                         onPressed: () {

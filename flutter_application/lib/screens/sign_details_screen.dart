@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class SignDetailsScreen extends StatefulWidget {
   final Map<String, String> userDetails; // Receive user details
 
-  const SignDetailsScreen({Key? key, required this.userDetails}) : super(key: key);
+  const SignDetailsScreen({Key? key, required this.userDetails})
+      : super(key: key);
 
   @override
   _SignDetailsScreenState createState() => _SignDetailsScreenState();
@@ -43,7 +44,10 @@ class _SignDetailsScreenState extends State<SignDetailsScreen> {
           children: [
             const Text(
               'User Details',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFFA1371B)),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFA1371B)),
             ),
             const SizedBox(height: 20),
             Text(
@@ -64,7 +68,8 @@ class _SignDetailsScreenState extends State<SignDetailsScreen> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFA1371B), // Custom color
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   foregroundColor: Colors.white, // Set text color to white
                 ),
                 child: const Text(

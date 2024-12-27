@@ -10,7 +10,8 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double total = items.fold(0, (sum, item) => sum + (item.price * item.quantity));
+    double total =
+        items.fold(0, (sum, item) => sum + (item.price * item.quantity));
 
     return Scaffold(
       appBar: AppBar(
@@ -123,7 +124,6 @@ class CartScreen extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/payment');
-                
               },
               child: Text('Proceed to Payment'),
               style: ElevatedButton.styleFrom(
@@ -143,9 +143,12 @@ class CartScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
         ],
       ),
     );

@@ -10,7 +10,8 @@ class PasswordScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFFA1371B)), // Updated color
+          icon: const Icon(Icons.arrow_back,
+              color: Color(0xFFA1371B)), // Updated color
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -91,8 +92,10 @@ class PasswordScreen extends StatelessWidget {
                   Navigator.pushNamed(context, '/signcode');
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFA1371B), // Updated button color
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  backgroundColor:
+                      const Color(0xFFA1371B), // Updated button color
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text(
                   "Next",

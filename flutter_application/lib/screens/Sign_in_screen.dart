@@ -75,13 +75,15 @@ class SignInPage extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SignDetailsScreen(userDetails: userDetails),
+                      builder: (context) =>
+                          SignDetailsScreen(userDetails: userDetails),
                     ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFA1371B),
-                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
                 child: const Text(
                   "Sign In",

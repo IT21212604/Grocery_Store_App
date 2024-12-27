@@ -31,52 +31,77 @@ class GroceryApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Grocery App',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      // Set the initial route to the Welcome Screen
-      initialRoute: '/',
-      // Define all the routes
-      routes: {
-        '/': (context) => const WelcomeScreen(),
-        '/signup': (context) => const SignUpScreen(),
-        '/password': (context) => const PasswordScreen(),
-        '/signcode': (context) => const SignCodeScreen(),
-        '/signin': (context) => SignInPage(),
-        '/signDetails': (context) => const SignDetailsScreen(userDetails: {
-              "surname": "John",
-              "phone": "1234567890"
-            }), // Sample initial data for testing
-        '/addressList': (context) => AddressPage(),
-        '/newAddress': (context) => NewAddress(),
-        '/editAddress': (context) => EditAddress(
-              index: 0,
-              address: {
-                "title": "Sample",
-                "city": "Sample City",
-                "address": "Sample Address"
-              },
+    // ValueNotifier for theme mode
+    ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.light);
+
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (context, themeMode, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Grocery App',
+          themeMode: themeMode, // Dynamically use theme mode
+          theme: ThemeData(
+            primarySwatch: Colors.red,
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white,
+              iconTheme: IconThemeData(color: Colors.black),
+              titleTextStyle: TextStyle(color: Colors.black),
             ),
-        '/cart': (context) => CartScreen(),
-        '/order_confirmation': (context) => const OrderConfirmationScreen(),
-        '/payment': (context) => const PaymentScreen(),
-        '/home': (context) => const home_screen.HomeScreen(), // Use alias
-        '/cartPage': (context) => const cart_screen.CartPage(), // Use alias
-        '/fruits': (context) => const FruitsPage(),
-        '/fruitsDetails': (context) => const FruitDetailsPage(
-              name: 'Apple',
-              price: '10.0',
-              image: 'assets/apple.png',
-              description: 'Fresh apples',
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            primarySwatch: Colors.red,
+            scaffoldBackgroundColor: Colors.black,
+            appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.black,
+              iconTheme: IconThemeData(color: Colors.white),
+              titleTextStyle: TextStyle(color: Colors.white),
             ),
-        '/categories': (context) => const CategoriesPage(),
-        '/orderFail': (context) => const OrderFailedPage(),
-        '/orderHistory': (context) => const OrdersHistoryPage(),
-        '/orderOngoing': (context) => const OrdersOngoingPage(),
+            textTheme: const TextTheme(
+              bodyLarge:
+                  TextStyle(color: Colors.white), // Updated from bodyText1
+              bodyMedium:
+                  TextStyle(color: Colors.white), // Updated from bodyText2
+            ),
+          ),
+
+          initialRoute: '/',
+          routes: {
+            '/': (context) => WelcomeScreen(
+                themeNotifier: themeNotifier), // Pass the theme notifier
+            '/signup': (context) => const SignUpScreen(),
+            '/password': (context) => const PasswordScreen(),
+            '/signcode': (context) => const SignCodeScreen(),
+            '/signin': (context) => SignInPage(),
+            '/signDetails': (context) => const SignDetailsScreen(
+                userDetails: {"surname": "John", "phone": "1234567890"}),
+            '/addressList': (context) => AddressPage(),
+            '/newAddress': (context) => NewAddress(),
+            '/editAddress': (context) => EditAddress(index: 0, address: {
+                  "title": "Sample",
+                  "city": "Sample City",
+                  "address": "Sample Address"
+                }),
+            '/cart': (context) => CartScreen(),
+            '/order_confirmation': (context) => const OrderConfirmationScreen(),
+            '/payment': (context) => const PaymentScreen(),
+            '/home': (context) => const home_screen.HomeScreen(),
+            '/cartPage': (context) => const cart_screen.CartPage(),
+            '/fruits': (context) => const FruitsPage(),
+            '/fruitsDetails': (context) => const FruitDetailsPage(
+                  name: 'Apple',
+                  price: '10.0',
+                  image: 'assets/apple.png',
+                  description: 'Fresh apples',
+                ),
+            '/categories': (context) => const CategoriesPage(),
+            '/orderFail': (context) => const OrderFailedPage(),
+            '/orderHistory': (context) => const OrdersHistoryPage(),
+            '/orderOngoing': (context) => const OrdersOngoingPage(),
+          },
+        );
       },
     );
   }

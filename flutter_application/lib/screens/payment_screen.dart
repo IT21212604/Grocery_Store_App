@@ -27,7 +27,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Future<void> _selectDate(BuildContext context) async {
     // Calculate date range (e.g., allow selection up to 2 weeks ahead)
     final lastDate = DateTime.now().add(const Duration(days: 14));
-    
+
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? currentDate,
@@ -60,17 +60,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
   }
 
-    String _formatDate(DateTime date) {
+  String _formatDate(DateTime date) {
     // Format like "Monday, Dec 24"
     final List<String> weekdays = [
-      'Monday', 'Tuesday', 'Wednesday', 
-      'Thursday', 'Friday', 'Saturday', 'Sunday'
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
     ];
     final List<String> months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ];
-    
+
     final weekday = weekdays[date.weekday - 1];
     final month = months[date.month - 1];
     return '$weekday, $month ${date.day}';
@@ -88,10 +103,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
       if (forceRefresh) {
         await Future.delayed(const Duration(milliseconds: 500));
       }
-      
-      final String response = await rootBundle.loadString('assets/payment_data.json');
+
+      final String response =
+          await rootBundle.loadString('assets/payment_data.json');
       final data = await json.decode(response);
-      
+
       setState(() {
         orderData = data;
         isLoading = false;
@@ -100,7 +116,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
       setState(() {
         isLoading = false;
       });
-      
+
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -117,15 +133,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   AppBar _buildAppBar() {
-  return AppBar(
-    title: const Text('Payment'),
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back),
-      onPressed: () => Navigator.pop(context),
-    ),
-  );
-}
-
+    return AppBar(
+      title: const Text('Payment'),
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => Navigator.pop(context),
+      ),
+    );
+  }
 
   Widget _buildDeliveryLocation() {
     if (orderData == null) return const SizedBox.shrink();
@@ -186,7 +201,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     if (orderData == null) return const SizedBox.shrink();
 
     final timeSlots = orderData!['time_slots'] as List;
-    
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -216,7 +231,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.calendar_today, color: Colors.brown, size: 20),
+                  const Icon(Icons.calendar_today,
+                      color: Colors.brown, size: 20),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
@@ -225,8 +241,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           : 'Select Date',
                       style: TextStyle(
                         color: Colors.brown,
-                        fontWeight: selectedDate != null 
-                            ? FontWeight.bold 
+                        fontWeight: selectedDate != null
+                            ? FontWeight.bold
                             : FontWeight.normal,
                       ),
                     ),
@@ -262,8 +278,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   backgroundColor: Colors.white,
                   selectedColor: Colors.brown.shade200,
                   labelStyle: TextStyle(
-                    color: selectedTimeSlot == time 
-                        ? Colors.brown 
+                    color: selectedTimeSlot == time
+                        ? Colors.brown
                         : Colors.brown.shade700,
                   ),
                 );
@@ -281,9 +297,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.check_circle, 
-                       color: Colors.green.shade700, 
-                       size: 20),
+                  Icon(Icons.check_circle,
+                      color: Colors.green.shade700, size: 20),
                   const SizedBox(width: 8),
                   Text(
                     'Delivery set for ${_formatDate(selectedDate!)} at $selectedTimeSlot',
@@ -366,7 +381,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ...paymentMethods.map<Widget>((method) {
             return ListTile(
               leading: Icon(
-                method['type'] == 'apple_pay' ? Icons.apple : Icons.attach_money,
+                method['type'] == 'apple_pay'
+                    ? Icons.apple
+                    : Icons.attach_money,
                 color: Colors.brown,
               ),
               title: Text(
@@ -446,81 +463,83 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: _buildAppBar(),
-    body: RefreshIndicator(
-      onRefresh: refreshData,
-      child: orderData == null && isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.brown),
-              ),
-            )
-          : SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildDeliveryLocation(),
-                  const SizedBox(height: 16),
-                  _buildDateTimePicker(),
-                  const SizedBox(height: 16),
-                  _buildInStorePickup(),
-                  const SizedBox(height: 16),
-                  _buildPaymentMethods(),
-                  const SizedBox(height: 16),
-                  _buildOrderSummary(),
-                  const SizedBox(height: 24),
-                  if (orderData != null)
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/order_confirmation');
-                          // Handle checkout
-                          print(
-                              'Checkout pressed with total: ${orderData!['order_summary']['total']}');
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.brown,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: _buildAppBar(),
+      body: RefreshIndicator(
+        onRefresh: refreshData,
+        child: orderData == null && isLoading
+            ? const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.brown),
+                ),
+              )
+            : SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _buildDeliveryLocation(),
+                    const SizedBox(height: 16),
+                    _buildDateTimePicker(),
+                    const SizedBox(height: 16),
+                    _buildInStorePickup(),
+                    const SizedBox(height: 16),
+                    _buildPaymentMethods(),
+                    const SizedBox(height: 16),
+                    _buildOrderSummary(),
+                    const SizedBox(height: 24),
+                    if (orderData != null)
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/order_confirmation');
+                            // Handle checkout
+                            print(
+                                'Checkout pressed with total: ${orderData!['order_summary']['total']}');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.brown,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
-                        ),
-                        child: Text(
-                          'CheckOut \$${orderData!['order_summary']['total']}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          child: Text(
+                            'CheckOut \$${orderData!['order_summary']['total']}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                ],
+                  ],
+                ),
               ),
-            ),
-    ),
-    bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.brown,
-      unselectedItemColor: Colors.grey,
-      currentIndex: 0,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
-        BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-        BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
-      ],
-      onTap: (index) {
-        // Handle navigation based on index
-      },
-    ),
-  );
-}
-  
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.brown,
+        unselectedItemColor: Colors.grey,
+        currentIndex: 0,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
+        ],
+        onTap: (index) {
+          // Handle navigation based on index
+        },
+      ),
+    );
+  }
 }

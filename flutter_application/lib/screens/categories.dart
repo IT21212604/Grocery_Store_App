@@ -135,9 +135,12 @@ class CategoriesPage extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: "Cart"),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
         ],
       ),
     );
@@ -181,7 +184,8 @@ class CategoryGridItem extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             category.name,
-            style: const TextStyle(fontSize: 12), // Correct placement of the style
+            style:
+                const TextStyle(fontSize: 12), // Correct placement of the style
           ),
         ],
       ),

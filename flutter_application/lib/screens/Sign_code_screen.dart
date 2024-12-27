@@ -6,7 +6,7 @@ class SignCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(
+      appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
@@ -21,7 +21,10 @@ class SignCodeScreen extends StatelessWidget {
           children: [
             const Text(
               "Sign Up",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFFA1371B)),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFA1371B)),
             ),
             const SizedBox(height: 20),
             Center(
@@ -34,7 +37,10 @@ class SignCodeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             const Text(
               "Enter Verification Code",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Color(0xFFA1371B)),
+              style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFA1371B)),
             ),
             const SizedBox(height: 20),
             const Text(
@@ -53,11 +59,13 @@ class SignCodeScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // Handle code submission logic here
-                Navigator.pushNamed(context, '/signin'); // Navigate to SignInScreen
+                Navigator.pushNamed(
+                    context, '/signin'); // Navigate to SignInScreen
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFA1371B),
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               ),
               child: const Text(
                 "Sign Up",

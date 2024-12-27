@@ -9,16 +9,18 @@ class NewAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text('New Address',
-      style: TextStyle(color: const Color.fromARGB(255, 243, 110, 33)), 
+        title: Text(
+          'New Address',
+          style: TextStyle(color: const Color.fromARGB(255, 243, 110, 33)),
+        ),
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: const Color.fromARGB(255, 0, 0, 0)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
-     leading: IconButton(
-    icon: Icon(Icons.arrow_back, color: const Color.fromARGB(255, 0, 0, 0)), 
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  ),
-),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -46,7 +48,6 @@ class NewAddress extends StatelessWidget {
               },
               child: Text('Add'),
             ),
-            
           ],
         ),
       ),
