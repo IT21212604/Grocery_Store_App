@@ -112,7 +112,9 @@ class _CartPageState extends State<CartPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              },
               child: const Text("CheckOut",
                   style: TextStyle(color: Colors.white, fontSize: 18)),
             ),

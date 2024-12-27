@@ -152,7 +152,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/addressList');
+                },
                 child: const Text(
                   'Change',
                   style: TextStyle(color: Colors.brown),
@@ -476,6 +478,7 @@ Widget build(BuildContext context) {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
+                          Navigator.pushNamed(context, '/order_confirmation');
                           // Handle checkout
                           print(
                               'Checkout pressed with total: ${orderData!['order_summary']['total']}');

@@ -19,7 +19,7 @@ class CartScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Itemes',
+          'Items',
           style: TextStyle(color: Colors.brown, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.transparent,
@@ -118,6 +118,21 @@ class CartScreen extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/payment');
+                
+              },
+              child: Text('Proceed to Payment'),
+              style: ElevatedButton.styleFrom(
+                // primary: Colors.brown,
+                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -132,6 +147,28 @@ class CartScreen extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorite"),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: "Account"),
         ],
+      ),
+    );
+  }
+}
+
+class PaymentPage extends StatelessWidget {
+  final double total;
+
+  PaymentPage({required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Payment'),
+        backgroundColor: Colors.brown,
+      ),
+      body: Center(
+        child: Text(
+          'Total Payment: \$${total.toStringAsFixed(2)}',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

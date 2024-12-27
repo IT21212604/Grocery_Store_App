@@ -94,7 +94,9 @@ class FruitDetailsPage extends StatelessWidget {
                     ],
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/cartPage');
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFA1371B),
                       foregroundColor: Colors.white,

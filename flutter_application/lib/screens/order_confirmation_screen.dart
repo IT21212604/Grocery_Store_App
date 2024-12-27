@@ -52,6 +52,7 @@ class OrderConfirmationScreen extends StatelessWidget {
               const SizedBox(height: 16),
               OutlinedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, '/home');
                   // Add navigation logic
                 },
                 style: OutlinedButton.styleFrom(
