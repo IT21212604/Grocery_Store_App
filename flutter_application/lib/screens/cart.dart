@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 import 'categories.dart';
 import 'fruits.dart';
+import 'order_ongoing.dart';
+import 'order_history.dart';
 
 void main() {
   runApp(const MyApp());
@@ -137,6 +139,11 @@ class _CartPageState extends State<CartPage> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CategoriesPage()),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OrdersOngoingPage()),
             );
           }
           if (index == 2) return;

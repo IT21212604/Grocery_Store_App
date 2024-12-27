@@ -3,6 +3,8 @@ import 'cart.dart';
 import 'categories.dart';
 import 'fruits.dart';
 import 'home.dart';
+import 'order_ongoing.dart';
+import 'order_history.dart';
 
 class FruitDetailsPage extends StatelessWidget {
   final String name;
@@ -165,6 +167,11 @@ class FruitDetailsPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OrdersOngoingPage()),
             );
           }
           if (index == 1) return;

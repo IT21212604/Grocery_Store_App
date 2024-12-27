@@ -92,7 +92,83 @@
 //   }
 // }
 
+// class OrderCard extends StatelessWidget {
+//   final String orderNumber;
+//   final String status;
+//   final String date;
+//   final String price;
+//   final Color statusColor;
+
+//   const OrderCard({
+//     Key? key,
+//     required this.orderNumber,
+//     required this.status,
+//     required this.date,
+//     required this.price,
+//     required this.statusColor,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       margin: const EdgeInsets.symmetric(vertical: 8.0),
+//       child: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Text(
+//                   orderNumber,
+//                   style: const TextStyle(
+//                     fontSize: 18,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//                 const SizedBox(height: 4),
+//                 Text(
+//                   date,
+//                   style: TextStyle(
+//                     fontSize: 14,
+//                     color: Colors.grey.shade600,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.end,
+//               children: [
+//                 Text(
+//                   price,
+//                   style: const TextStyle(
+//                     fontSize: 16,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//                 const SizedBox(height: 4),
+//                 Text(
+//                   status,
+//                   style: TextStyle(
+//                     fontSize: 14,
+//                     color: statusColor,
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
 import 'package:flutter/material.dart';
+import 'cart.dart';
+import 'categories.dart';
+import 'home.dart';
 
 class OrdersHistoryPage extends StatelessWidget {
   const OrdersHistoryPage({Key? key}) : super(key: key);
@@ -121,7 +197,7 @@ class OrdersHistoryPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/ordersOngoing');
+                    Navigator.pushNamed(context, '/orderOngoing');
                   },
                   child: Text(
                     'Ongoing',
@@ -180,6 +256,45 @@ class OrdersHistoryPage extends StatelessWidget {
               ],
             ),
           ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.brown,
+        unselectedItemColor: Colors.grey,
+        currentIndex: 4, // Adjust based on current page
+        onTap: (index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CategoriesPage()),
+            );
+          } else if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OrdersHistoryPage()),
+            );
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Shop"),
+          BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: "Cart"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: "Account"),
         ],
       ),
     );

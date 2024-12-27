@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'cart.dart';
 import 'categories.dart';
 import 'fruits.dart';
+import 'order_history.dart';
+import 'order_ongoing.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -167,6 +169,11 @@ class HomeScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OrdersOngoingPage()),
             );
           }
         },

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 import 'cart.dart';
 import 'fruits.dart';
+import 'order_ongoing.dart';
+import 'order_history.dart';
 
 void main() {
   runApp(const MyApp());
@@ -129,6 +131,11 @@ class CategoriesPage extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OrdersOngoingPage()),
             );
           }
         },
