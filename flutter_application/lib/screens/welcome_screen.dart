@@ -64,7 +64,9 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             OutlinedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/signin');
+              },
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: Color(0xFFA1371B)),
               ),
