@@ -16,8 +16,8 @@ Clone this repository:
 git clone https://github.com/IT21212604/Grocery_Store_App
 
 Navigate to the project directory:
-cd Grocery_Store_App
-cd flutter_application
+- cd Grocery_Store_App
+- cd flutter_application
 
 Start the application:
 flutter run
